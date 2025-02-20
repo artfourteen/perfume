@@ -40,12 +40,14 @@ export default function DeliveryPage() {
             </p>
           </div>
           <div className="w-72 border-t mx-auto" />
-          <div className="flex flex-col items-center gap-3 w-1/2 mx-auto">
+          <div className="flex flex-col items-center gap-3 md:w-1/2 mx-auto">
             <p className="text-center text-lg mx-auto font-light">
               Подписывайтесь на нас в Instagram, и следите за интересными
               парфюмерными обзорами, распаковками и советами.
             </p>
-            <Socials />
+            <div className="hidden md:block">
+              <Socials />
+            </div>
           </div>
         </div>
       </Container>

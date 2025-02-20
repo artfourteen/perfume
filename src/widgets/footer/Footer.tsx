@@ -52,7 +52,7 @@ export const Footer = () => {
             </div>
           </div>
           <div className="pt-6 text-center text-gray-400 border-t text-sm">
-            &copy; <Logo /> {currentYear}. Все права защищены.
+            &copy; LOGO {currentYear}. Все права защищены.
           </div>
         </div>
       </Container>

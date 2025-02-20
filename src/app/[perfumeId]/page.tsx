@@ -3,7 +3,7 @@ import { Container } from "@/shared/core/container/Container";
 import { Button } from "@/shared/ui/button/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { Counter } from "@/features/counter/Counter";
+import { Counter } from "@/features/counter/ui/Counter";
 
 export default function PerfumePage() {
   return (
@@ -17,8 +17,8 @@ export default function PerfumePage() {
             <FaArrowLeftLong />
             <span>Назад</span>
           </Link>
-          <div className="flex gap-36">
-            <div className="bg-blue-50 w-full">
+          <div className="flex flex-col md:flex-row agap gap-12 md:gap-20 lg:gap-36">
+            <div className="bg-blue-50 w-full h-fit">
               <Image
                 src="/assets/img/perfume/perfume1.png"
                 alt="Perfume1"
@@ -27,7 +27,7 @@ export default function PerfumePage() {
                 className="w-full"
               />
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 md:w-5/6 lg:w-auto">
               <div className="flex flex-col gap-2">
                 <h3 className="text-3xl font-light">
                   Amouage Interlude For Men

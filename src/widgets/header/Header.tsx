@@ -55,7 +55,7 @@ export const Header = () => {
           <div className="flex flex-col py-12 items-center w-full h-full justify-between relative">
             <button
               onClick={handleToggle}
-              className="absolute top-5 right-0 text-3xl"
+              className="absolute top-7 right-0 text-3xl"
             >
               <IoClose />
             </button>

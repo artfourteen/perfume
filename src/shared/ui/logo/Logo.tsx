@@ -1,3 +1,3 @@
 export const Logo = () => {
-  return <span>Logo</span>;
+  return <span className="text-3xl uppercase">Logo</span>;
 };

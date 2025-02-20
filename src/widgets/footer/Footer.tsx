@@ -12,8 +12,8 @@ export const Footer = () => {
     <footer className="border-t py-6">
       <Container>
         <div className="flex flex-col gap-5">
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-5 w-56">
+          <div className="flex flex-wrap flex-col md:flex-row md:justify-between gap-5">
+            <div className="flex flex-col items-center text-center mx-auto md:mx-0 md:text-start md:items-start gap-5 w-56">
               <Link href="/">
                 <Logo />
               </Link>
@@ -23,7 +23,7 @@ export const Footer = () => {
               </p>
               <Socials />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 text-center md:text-start">
               <div className="text-xl uppercase font-light">На нашем сайте</div>
               <ul className="flex flex-col gap-3">
                 {links.map((link) => (
@@ -36,7 +36,7 @@ export const Footer = () => {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 text-center md:text-start">
               <div className="text-xl uppercase font-light">Контакты</div>
               <ul className="flex flex-col gap-3">
                 <li className="text-gray-400 hover:text-gray-800 transition-all">

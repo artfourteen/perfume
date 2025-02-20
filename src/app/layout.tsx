@@ -22,9 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("flex flex-col h-dvh antialiased")}>
+      <body className={cn("flex flex-col h-dvh antialiased relative")}>
         <Header />
-        <main className="flex-1 h-dvh">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

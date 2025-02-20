@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div className="py-10">
       <Container>
-        <div className="grid grid-cols-4 gap-x-3 gap-y-6 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-6 place-items-center">
           <ParfumeCard />
           <ParfumeCard />
           <ParfumeCard />

@@ -1,4 +1,3 @@
-import { Container } from "@/shared/core/container/Container";
 import { Button } from "@/shared/ui/button/Button";
 import Link from "next/link";
 

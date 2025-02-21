@@ -1,6 +1,6 @@
 "use client";
 
-import { FaCheck } from "react-icons/fa6";
+import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
 import { DropdonwProvider } from "@/shared/ui/dropdown/provider/DropdownProvider";
 import {
@@ -9,10 +9,9 @@ import {
   DropdownList,
   DropdownTrigger,
 } from "@/shared/ui/dropdown/ui/Dropdown";
-import { useEffect, useState } from "react";
-import { FaAngleDown } from "react-icons/fa6";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { cn } from "@/shared/core/cn/cn";
+import { useEffect, useState } from "react";
+import { FaAngleDown, FaCheck } from "react-icons/fa6";
 
 const sortItems = [
   {
@@ -84,7 +83,8 @@ export const Sort = () => {
               >
                 <span>{sortItem.label}</span>
                 <FaCheck
-                  className={cn("opacity-0 transition-all text-sm", {
+                  size={32}
+                  className={cn("opacity-0 transition-all", {
                     "opacity-100": sortItem.value === sort,
                   })}
                 />

@@ -3,17 +3,18 @@ import { Footer } from "@/widgets/footer/Footer";
 import { Header } from "@/widgets/header/Header";
 import type { Metadata } from "next";
 import "./globals.scss";
-// import { Manrope } from "next/font/google";
+import { Dynalight } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Perfume Project",
   description: "Powered by ART14",
 };
 
-// const manrope = Manrope({
-//   subsets: ["cyrillic", "latin"],
-//   weight: ["200", "300", "400", "500", "600", "700", "800"],
-// });
+const dynalight = Dynalight({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-dynalight",
+});
 
 export default function RootLayout({
   children,
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("flex flex-col h-dvh antialiased relative")}>
+      <body className={cn(dynalight.variable, "flex flex-col h-dvh antialiased relative")}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

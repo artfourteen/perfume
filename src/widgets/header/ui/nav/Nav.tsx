@@ -14,9 +14,12 @@ export const Nav = () => {
         {links.map((link) => (
           <li
             key={link.id}
-            className={cn("border-b-2 border-transparent transition-all", {
-              "border-black": link.href === pathname,
-            })}
+            className={cn(
+              "border-b-2 border-transparent transition-all uppercase text-sm",
+              {
+                "border-black": link.href === pathname,
+              }
+            )}
           >
             <Link href={link.href}>{link.label}</Link>
           </li>

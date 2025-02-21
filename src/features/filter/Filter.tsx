@@ -61,8 +61,8 @@ export const Filter = () => {
           </Button>
         </DropdownTrigger>
         <DropdownList className="md:right-0 max-h-96 overflow-y-auto">
-          {brands.map((brand, index) => (
-            <DropdownItem key={index} hideWhenClick={false} asChild>
+          {brands.map((brand) => (
+            <DropdownItem key={brand} hideWhenClick={false} asChild>
               <Button
                 onClick={() => handleChange(brand)}
                 className={cn(

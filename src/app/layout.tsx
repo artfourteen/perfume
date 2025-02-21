@@ -4,6 +4,7 @@ import { Header } from "@/widgets/header/Header";
 import type { Metadata } from "next";
 import "./globals.scss";
 import { Dynalight } from "next/font/google";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const metadata: Metadata = {
   title: "AysParfume",

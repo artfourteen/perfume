@@ -15,7 +15,7 @@ export const Footer = () => {
       <Container>
         <div className="flex flex-col gap-5">
           <div className="flex flex-wrap flex-col md:flex-row md:justify-between gap-5">
-            <div className="flex flex-col items-center text-center mx-auto md:mx-0 md:text-start md:items-start gap-5 w-56">
+            <div className="flex flex-col items-center text-center mx-auto md:mx-0 md:text-start md:items-start gap-5 md:w-56">
               <Link href="/">
                 <Logo />
               </Link>

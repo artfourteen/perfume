@@ -3,17 +3,28 @@
 import { ParfumeCard } from "@/entities/parfume/ui/ParfumeCard";
 import { perfumes } from "@/shared/constants/perfumes";
 import { cn } from "@/shared/core/cn/cn";
+import { TbMoodEmpty } from "react-icons/tb";
 import { useSearchParams } from "next/navigation";
 
 export const PerfumeList = () => {
   const searchParams = useSearchParams();
 
   // Разбираем бренды (split по ",")
+  const search = searchParams.get("search");
   const selectedBrands = searchParams.get("brands")?.split(",") || [];
   const sortParam = searchParams.get("sort");
 
-  // Фильтрация по брендам
   let filteredPerfumes = perfumes;
+  // Фильтрация по поиску
+  if (search) {
+    filteredPerfumes = filteredPerfumes.filter(
+      (perfume) =>
+        perfume.title.toLowerCase().includes(search.toLowerCase()) ||
+        perfume.brand.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  // Фильтрация по брендам
   if (selectedBrands.length > 0) {
     filteredPerfumes = filteredPerfumes.filter((perfume) =>
       selectedBrands.includes(perfume.brand)
@@ -36,6 +47,15 @@ export const PerfumeList = () => {
           return 0;
       }
     });
+  }
+
+  if (!filteredPerfumes.length) {
+    return (
+      <div className="w-full flex flex-col items-center justify-center py-20 gap-1 text-3xl font-light">
+        <TbMoodEmpty className="stroke-1 text-9xl" />
+        <h3 className="uppercase">Ничего не найдено</h3>
+      </div>
+    );
   }
 
   return (

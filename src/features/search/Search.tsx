@@ -15,8 +15,8 @@ export const Search = () => {
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (term) {
-      params.set("search", term);
+    if (term.trim().length) {
+      params.set("search", term.trim());
     } else {
       params.delete("search");
     }

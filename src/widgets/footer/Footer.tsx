@@ -1,9 +1,11 @@
 "use client";
 
+import { email, phoneNumber } from "@/shared/constants/contacts";
 import { links } from "@/shared/constants/navLinks";
 import { Container } from "@/shared/core/container/Container";
 import { Logo } from "@/shared/ui/logo/Logo";
 import { Socials } from "@/shared/ui/socials/Socials";
+import { formatPhoneNumber } from "@/shared/utils/formatPhoneNumber";
 import Link from "next/link";
 
 export const Footer = () => {
@@ -18,8 +20,7 @@ export const Footer = () => {
                 <Logo />
               </Link>
               <p className="text-gray-400">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus, cupiditate!
+                Приобретите изысканные духи на любой случай.
               </p>
               <Socials />
             </div>
@@ -40,13 +41,19 @@ export const Footer = () => {
               <div className="text-xl uppercase font-light">Контакты</div>
               <ul className="flex flex-col gap-3">
                 <li className="text-gray-400 hover:text-gray-800 transition-all">
-                  <Link href="/">logo.com</Link>
+                  <Link target="_blank" href={`mailto:${email}`}>
+                    {email}
+                  </Link>
                 </li>
                 <li className="text-gray-400 hover:text-gray-800 transition-all">
-                  <Link href="tel:+77082239268">+7 (708) 223-92-68</Link>
+                  <Link target="_blank" href={`tel:${phoneNumber}`}>
+                    {formatPhoneNumber(phoneNumber)}
+                  </Link>
                 </li>
                 <li className="text-gray-400 hover:text-gray-800 transition-all">
-                  <Link href="">г. Алматы, ул. Назарбаева 69</Link>
+                  <Link target="_blank" href="">
+                    г. Алматы, ул. Назарбаева 69
+                  </Link>
                 </li>
               </ul>
             </div>

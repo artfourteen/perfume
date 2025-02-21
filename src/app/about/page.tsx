@@ -1,5 +1,10 @@
 import { Container } from "@/shared/core/container/Container";
 import { FAQ } from "@/widgets/faq/Faq";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "О нас | AysParfume",
+};
 
 export default function AboutPage() {
   return (

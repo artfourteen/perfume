@@ -6,8 +6,8 @@ import "./globals.scss";
 import { Dynalight } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Perfume Project",
-  description: "Powered by ART14",
+  title: "AysParfume",
+  description: "Приобретите изысканные духи на любой случай.",
 };
 
 const dynalight = Dynalight({
@@ -23,7 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(dynalight.variable, "flex flex-col h-dvh antialiased relative")}>
+      <body
+        className={cn(
+          dynalight.variable,
+          "flex flex-col h-dvh antialiased relative"
+        )}
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -4,25 +4,28 @@ import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
 import Image from "next/image";
 import Link from "next/link";
+import { ParfumeEntity } from "../model/parfume";
 
-export const ParfumeCard = () => {
+export const ParfumeCard = ({
+  slug,
+  title,
+  brand,
+  price,
+  img,
+}: ParfumeEntity) => {
   return (
     <Link
-      href="/1"
+      href={`/${slug}`}
       className="group relative border pb-5 md:border-none md:pb-0"
     >
       <div className="py-3 px-1 md:group-hover:blur-sm transition-all">
         <div>
-          <Image
-            src="/assets/img/perfume/perfume1.png"
-            alt="parfume1"
-            width={350}
-            height={400}
-          />
+          <Image src={img} alt={slug} width={350} height={400} />
         </div>
         <div className="flex flex-col gap-2 text-center">
-          <div className="text-xl font-light">Amouage Interlude For Men</div>
-          <div className="font-medium">11 000₸</div>
+          <div className="text-xl font-light">{title}</div>
+          <div className="font-light text-gray-400">{brand}</div>
+          <div className="font-medium">{price.toLocaleString()}₸</div>
         </div>
       </div>
       <div className="flex md:hidden items-center gap-3 justify-center">

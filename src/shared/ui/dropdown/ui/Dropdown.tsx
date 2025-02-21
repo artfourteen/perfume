@@ -95,7 +95,7 @@ const DropdownList = ({
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  });
 
   if (!isOpen) return null;
 

@@ -1,5 +1,13 @@
+import { phoneNumber } from "@/shared/constants/contacts";
 import { Container } from "@/shared/core/container/Container";
 import { Socials } from "@/shared/ui/socials/Socials";
+import { formatPhoneNumber } from "@/shared/utils/formatPhoneNumber";
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Доставка | AysParfume",
+};
 
 export default function DeliveryPage() {
   return (
@@ -33,10 +41,15 @@ export default function DeliveryPage() {
               (Согласно Закону РК от 04 мая 2010г. №274-IV «О защите прав
               потребителей»).
             </p>
-            <p className="text-xl font-light">
+            <p className="text-xl font-light flex items-center gap-1">
               В случае возникновения проблемы Покупатель вправе направить в
               течение 14 дней претензию в свободной форме в по WhatsApp номеру
-              +7 (708) 223-92-68.
+              <Link
+                href={`tel:${phoneNumber}`}
+                className="underline text-blue-500"
+              >
+                {formatPhoneNumber(phoneNumber)}
+              </Link>
             </p>
           </div>
           <div className="w-72 border-t mx-auto" />

@@ -1,20 +1,19 @@
 "use client";
 
 import { Button } from "@/shared/ui/button/Button";
-import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
-export const Counter = () => {
-  const [count, setCount] = useState(1);
+export interface CounterProps {
+  count: number;
+  handleIncrement: () => void;
+  handleDecrement: () => void;
+}
 
-  const handleIncrement = () => {
-    setCount((prev) => prev + 1);
-  };
-
-  const handleDecrement = () => {
-    setCount((prev) => prev - 1);
-  };
-
+export const Counter = ({
+  count,
+  handleDecrement,
+  handleIncrement,
+}: CounterProps) => {
   return (
     <div className="flex items-center gap-6 border py-2 px-3 w-fit">
       <Button

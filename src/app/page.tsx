@@ -13,10 +13,14 @@ export default function HomePage() {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="w-full md:w-96">
-              <Search />
+              <Suspense fallback={<Loader />}>
+                <Search />
+              </Suspense>
             </div>
             <div className="w-full md:w-fit flex items-center justify-between md:justify-normal gap-5">
-              <Filter />
+              <Suspense fallback={<Loader />}>
+                <Filter />
+              </Suspense>
               <Suspense fallback={<Loader />}>
                 <Sort />
               </Suspense>

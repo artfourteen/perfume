@@ -90,3 +90,5 @@ export const perfumes: ParfumeEntity[] = [
     img: "/assets/img/perfume/boadicea_dragon.webp",
   },
 ];
+
+export const brands = [...new Set(perfumes.map((perfume) => perfume.brand))];

@@ -11,7 +11,7 @@ import {
 } from "@/shared/ui/dropdown/ui/Dropdown";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaAngleDown, FaCheck } from "react-icons/fa6";
+import { IoCheckmark, IoChevronDownOutline } from "react-icons/io5";
 
 const sortItems = [
   {
@@ -37,7 +37,6 @@ const sortItems = [
 ];
 
 export const Sort = () => {
-  const [open, setOpen] = useState<boolean>(false);
   const [sort, setSort] = useState<string>("");
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -62,16 +61,16 @@ export const Sort = () => {
   }, [searchParams]);
 
   return (
-    <DropdonwProvider isOpen={open} setIsOpen={setOpen}>
+    <DropdonwProvider>
       <Dropdown>
         <DropdownTrigger asChild>
-          <Button className="normal-case bg-white text-black hover:bg-gray-100 active:bg-white">
+          <Button className="normal-case bg-white text-black hover:bg-gray-100 active:bg-white font-light">
             <span>
               {sort
                 ? sortItems.find((sortItem) => sortItem.value === sort)?.label
                 : "Сортировать по..."}
             </span>
-            <FaAngleDown />
+            <IoChevronDownOutline />
           </Button>
         </DropdownTrigger>
         <DropdownList className="right-0">
@@ -79,11 +78,13 @@ export const Sort = () => {
             <DropdownItem asChild key={sortItem.id}>
               <Button
                 onClick={() => handleChange(sortItem.value)}
-                className="normal-case bg-white text-black hover:bg-gray-100 active:bg-white justify-between"
+                className={cn(
+                  "normal-case bg-white text-black hover:bg-gray-100",
+                  "font-light active:bg-white justify-between text-sm"
+                )}
               >
                 <span>{sortItem.label}</span>
-                <FaCheck
-                  size={32}
+                <IoCheckmark
                   className={cn("opacity-0 transition-all", {
                     "opacity-100": sortItem.value === sort,
                   })}

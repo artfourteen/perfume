@@ -1,14 +1,40 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
-import { IoClose } from "react-icons/io5";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+import { useDebouncedCallback } from "use-debounce";
 
 export const Search = () => {
-  const [search, setSearch] = useState<string>("");
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const [search, setSearch] = useState(searchParams.get("search") || "");
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+  const handleSearch = useDebouncedCallback((term: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (term) {
+      params.set("search", term);
+    } else {
+      params.delete("search");
+    }
+
+    replace(`${pathname}?${params.toString()}`);
+  }, 300);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearch(value);
+    handleSearch(value);
+  };
+
+  const handleClearInput = () => {
+    setSearch("");
+    const params = new URLSearchParams(searchParams);
+    params.delete("search");
+    replace(`${pathname}?${params.toString()}`);
   };
 
   return (
@@ -18,12 +44,12 @@ export const Search = () => {
         type="text"
         placeholder="Поиск по товарам"
         value={search}
-        onChange={(e) => handleSearchChange(e)}
+        onChange={handleInputChange}
         className="w-full text-lg font-light"
       />
-      {!!search.length && (
+      {search && (
         <button
-          onClick={() => setSearch("")}
+          onClick={handleClearInput}
           className="text-xl text-gray-500 hover:text-gray-700 transition-all"
         >
           <IoClose />

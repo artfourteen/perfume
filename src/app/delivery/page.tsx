@@ -41,12 +41,12 @@ export default function DeliveryPage() {
               (Согласно Закону РК от 04 мая 2010г. №274-IV «О защите прав
               потребителей»).
             </p>
-            <p className="text-xl font-light flex items-center gap-1">
+            <p className="text-xl font-light">
               В случае возникновения проблемы Покупатель вправе направить в
               течение 14 дней претензию в свободной форме в по WhatsApp номеру
               <Link
                 href={`tel:${phoneNumber}`}
-                className="underline text-blue-500"
+                className="underline text-blue-500 ml-1"
               >
                 {formatPhoneNumber(phoneNumber)}
               </Link>

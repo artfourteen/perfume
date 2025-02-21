@@ -1,3 +1,4 @@
+import { cn } from "@/shared/core/cn/cn";
 import { Slot } from "@radix-ui/react-slot";
 import {
   ButtonHTMLAttributes,
@@ -10,7 +11,6 @@ import {
 } from "react";
 import { DropdonwProvider } from "../provider/DropdownProvider";
 import { useDropdown } from "../provider/useDropdown";
-import { cn } from "@/shared/core/cn/cn";
 
 interface DropdownProps extends PropsWithChildren {
   isOpen?: boolean;
@@ -53,19 +53,28 @@ const DropdownTrigger = ({
 
 interface DropdownItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
+  hideWhenClick?: boolean;
 }
 
 const DropdownItem = ({
   asChild,
   className,
   children,
+  hideWhenClick = true,
   ...props
 }: DropdownItemProps) => {
   const { close } = useDropdown();
   const Comp = asChild ? Slot : "button";
 
   return (
-    <Comp role="menuitem" onClick={close} className={cn(className)} {...props}>
+    <Comp
+      role="menuitem"
+      onClick={() => {
+        if (hideWhenClick) close();
+      }}
+      className={cn(className)}
+      {...props}
+    >
       {children}
     </Comp>
   );

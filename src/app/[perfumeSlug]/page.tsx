@@ -1,6 +1,6 @@
 "use client";
 
-import { Counter } from "@/features/counter/ui/Counter";
+import { Counter } from "@/features/counter/Counter";
 import { perfumes } from "@/shared/constants/perfumes";
 import { cn } from "@/shared/core/cn/cn";
 import { Container } from "@/shared/core/container/Container";
@@ -11,6 +11,8 @@ import { notFound, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { RiExpandDiagonalLine } from "react-icons/ri";
+import { useCart } from "../../features/cart/provider/useCart";
 
 export default function PerfumePage() {
   const params = useParams();
@@ -20,6 +22,7 @@ export default function PerfumePage() {
   const [isImgOpen, setIsImgOpen] = useState<boolean>(false);
   const [count, setCount] = useState<number>(1);
   const [mill, setMill] = useState<number>(perfumeInfo?.ml[0] ?? 0);
+  const { addToCart, setOpen: setCartOpen } = useCart();
 
   useEffect(() => {
     if (!perfumeInfo) {
@@ -81,10 +84,10 @@ export default function PerfumePage() {
             <FaArrowLeftLong />
             <span>Назад</span>
           </Link>
-          <div className="flex flex-col md:flex-row agap gap-12 md:gap-20 lg:gap-36">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-20 lg:gap-36">
             <button
               onClick={() => setIsImgOpen(true)}
-              className="cursor-zoom-in"
+              className="cursor-zoom-in relative"
             >
               <div className="bg-blue-50 w-fit h-fit">
                 <Image
@@ -95,6 +98,7 @@ export default function PerfumePage() {
                   unoptimized
                 />
               </div>
+              <RiExpandDiagonalLine className="absolute bottom-4 right-4 text-3xl" />
             </button>
             <div className="flex flex-col gap-6 md:w-5/6 lg:w-fit">
               <div className="flex flex-col gap-2">
@@ -104,7 +108,10 @@ export default function PerfumePage() {
                 </span>
               </div>
               <div className="text-2xl font-light">
-                {perfumeInfo.price.toLocaleString()}₸
+                {perfumeInfo.price[
+                  perfumeInfo.ml.indexOf(mill)
+                ].toLocaleString()}
+                ₸
               </div>
               <div className="font-light flex flex-col gap-1">
                 <div className="text-sm">
@@ -131,7 +138,13 @@ export default function PerfumePage() {
                   handleDecrement={handleDecrement}
                   handleIncrement={handleIncrement}
                 />
-                <Button className="h-auto w-44 text-lg font-light uppercase">
+                <Button
+                  onClick={() => {
+                    addToCart(perfumeInfo.id, mill, count);
+                    setCartOpen(true);
+                  }}
+                  className="h-auto w-44 text-lg font-light uppercase"
+                >
                   Купить
                 </Button>
               </div>

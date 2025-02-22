@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import { Dynalight } from "next/font/google";
 import "react-loading-skeleton/dist/skeleton.css";
+import { CartProvider } from "../features/cart/provider/CartProvider";
+import { Cart } from "@/features/cart/ui/Cart";
 
 export const metadata: Metadata = {
   title: "AysParfume",
@@ -30,9 +32,12 @@ export default function RootLayout({
           "flex flex-col h-dvh antialiased relative"
         )}
       >
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Cart />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

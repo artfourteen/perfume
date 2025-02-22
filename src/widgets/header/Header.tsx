@@ -10,9 +10,11 @@ import { IoBagOutline } from "react-icons/io5";
 import { useState } from "react";
 import { cn } from "@/shared/core/cn/cn";
 import { links } from "@/shared/constants/navLinks";
+import { useCart } from "@/features/cart/provider/useCart";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { cartItems, setOpen } = useCart();
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
@@ -30,8 +32,22 @@ export const Header = () => {
           </div>
           <div className="flex items-center gap-5">
             <Socials />
-            <button className="hover:text-black/70 transition-all text-2xl">
+            <button
+              onClick={() => setOpen(true)}
+              className="hover:text-black/70 group transition-all text-2xl relative"
+            >
               <IoBagOutline />
+              <span
+                className={cn(
+                  "hidden absolute text-sm bg-black text-white min-w-4 h-4 -bottom-2 -right-2 transition-all",
+                  "px-[6px] py-[10px] items-center justify-center rounded-full group-hover:bg-black/70",
+                  {
+                    flex: cartItems.length > 0,
+                  }
+                )}
+              >
+                {cartItems.length}
+              </span>
             </button>
             <button className="md:hidden" onClick={handleToggle}>
               <div className="flex flex-col items-center justify-center gap-1 size-5">

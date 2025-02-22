@@ -3,7 +3,7 @@ export interface ParfumeEntity {
   title: string;
   slug: string;
   brand: string;
-  price: number;
+  price: number[];
   ml: number[];
   description: string;
   img: string;

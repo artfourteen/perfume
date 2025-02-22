@@ -34,11 +34,14 @@ export const PerfumeList = () => {
   // Сортировка по параметру "sort"
   if (sortParam) {
     filteredPerfumes = [...filteredPerfumes].sort((a, b) => {
+      const minPriceA = Math.min(...a.price);
+      const minPriceB = Math.min(...b.price);
+
       switch (sortParam) {
         case "price-asc":
-          return a.price - b.price;
+          return minPriceA - minPriceB;
         case "price-desc":
-          return b.price - a.price;
+          return minPriceB - minPriceA;
         case "title-asc":
           return a.title.localeCompare(b.title);
         case "title-desc":

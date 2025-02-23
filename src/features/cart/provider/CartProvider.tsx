@@ -1,15 +1,15 @@
 "use client";
 
 import {
-  type PropsWithChildren,
+  PropsWithChildren,
   useState,
   useEffect,
-  type Dispatch,
-  type SetStateAction,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { CartContext } from "./CartContext";
 import { perfumes } from "@/shared/constants/perfumes";
-import type { ParfumeEntity } from "@/entities/parfume/model/parfume";
+import { ParfumeEntity } from "@/entities/parfume/model/parfume";
 import { phoneNumber as sitePhoneNumber } from "@/shared/constants/contacts";
 
 export interface CartItem {
@@ -54,10 +54,8 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [countryCity, setCountryCity] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     setCartItems(JSON.parse(localStorage.getItem("cart") || "[]"));
     setFullname(localStorage.getItem("fullname") || "");
     setPhoneNumber(localStorage.getItem("phoneNumber") || "");
@@ -66,24 +64,24 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    if (isMounted) localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems, isMounted]);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(() => {
-    if (isMounted) localStorage.setItem("fullname", fullname);
-  }, [fullname, isMounted]);
+    localStorage.setItem("fullname", fullname);
+  }, [fullname]);
 
   useEffect(() => {
-    if (isMounted) localStorage.setItem("phoneNumber", phoneNumber);
-  }, [phoneNumber, isMounted]);
+    localStorage.setItem("phoneNumber", phoneNumber);
+  }, [phoneNumber]);
 
   useEffect(() => {
-    if (isMounted) localStorage.setItem("countryCity", countryCity);
-  }, [countryCity, isMounted]);
+    localStorage.setItem("countryCity", countryCity);
+  }, [countryCity]);
 
   useEffect(() => {
-    if (isMounted) localStorage.setItem("address", address);
-  }, [address, isMounted]);
+    localStorage.setItem("address", address);
+  }, [address]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -99,7 +97,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     };
   }, [open]);
 
-  const addToCart = (id: string, ml: number, quantity = 1) => {
+  const addToCart = (id: string, ml: number, quantity: number = 1) => {
     setCartItems((currentItems) => {
       const existingItem = currentItems.find(
         (item) => item.id === id && item.ml === ml
@@ -204,16 +202,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       .filter(Boolean)
       .join("\n\n");
 
-    const currentFullname = fullname || localStorage.getItem("fullname") || "";
-    const currentPhoneNumber =
-      phoneNumber || localStorage.getItem("phoneNumber") || "";
-    const currentCountryCity =
-      countryCity || localStorage.getItem("countryCity") || "";
-    const currentAddress = address || localStorage.getItem("address") || "";
-
-    const message = `✨ *Новый заказ!* ✨\n\n${cartDetails}\n\n📌 *Детали доставки:*\n👤 Имя: *${currentFullname}*  
-📞 Телефон: *${currentPhoneNumber}*  
-🏠 Адрес: *${currentCountryCity}, ${currentAddress}*\n\n💬 Пожалуйста, подтвердите заказ. Спасибо! 🙌`;
+    const message = `✨ *Новый заказ!* ✨\n\n${cartDetails}\n\n📌 *Детали доставки:*\n👤 Имя: *${fullname}*  
+📞 Телефон: *${phoneNumber}*  
+🏠 Адрес: *${countryCity}, ${address}*\n\n💬 Пожалуйста, подтвердите заказ. Спасибо! 🙌`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${sitePhoneNumber}?text=${encodedMessage}`;

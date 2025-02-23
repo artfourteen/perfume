@@ -1,11 +1,12 @@
 "use client";
 
+import type React from "react";
+
+import { useState } from "react";
 import { useCart } from "@/features/cart/provider/useCart";
 import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
 import { IoCloseOutline } from "react-icons/io5";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 const orderSchema = z.object({
@@ -32,35 +33,29 @@ export const OrderModal = () => {
     sendWhatsAppMessage,
   } = useCart();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(orderSchema),
-    defaultValues: {
+  const [errors, setErrors] = useState<Partial<z.infer<typeof orderSchema>>>(
+    {}
+  );
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = {
       fullname,
       phoneNumber,
       countryCity,
       address,
-    },
-  });
+    };
 
-  const onSubmit = (data: z.infer<typeof orderSchema>) => {
-    setFullname(data.fullname);
-    setPhoneNumber(data.phoneNumber);
-    setCountryCity(data.countryCity);
-    setAddress(data.address);
-
-    localStorage.setItem("fullname", data.fullname);
-    localStorage.setItem("phoneNumber", data.phoneNumber);
-    localStorage.setItem("countryCity", data.countryCity);
-    localStorage.setItem("address", data.address);
-
-    setTimeout(() => {
+    try {
+      orderSchema.parse(formData);
       sendWhatsAppMessage();
       setIsOrderModalOpen(false);
-    }, 100);
+      setErrors({});
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors(error.flatten().fieldErrors);
+      }
+    }
   };
 
   return (
@@ -85,10 +80,7 @@ export const OrderModal = () => {
           <IoCloseOutline />
         </button>
         <h2 className="text-3xl font-light uppercase">Оформить заказ</h2>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 w-full"
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
           <div className="space-y-1">
             <label htmlFor="fullname" className="text-sm font-light">
               Ваше Имя*
@@ -100,10 +92,11 @@ export const OrderModal = () => {
               })}
               placeholder="Ержан Мукагали"
               autoComplete="name"
-              {...register("fullname")}
+              value={fullname}
+              onChange={(e) => setFullname(e.target.value)}
             />
             {errors.fullname && (
-              <p className="text-red-500 text-sm">{errors.fullname.message}</p>
+              <p className="text-red-500 text-sm">{errors.fullname}</p>
             )}
           </div>
 
@@ -114,16 +107,15 @@ export const OrderModal = () => {
             <input
               id="phoneNumber"
               className={cn("w-full border border-black py-3 px-5 font-light", {
-                "border-red-500": errors.fullname,
+                "border-red-500": errors.phoneNumber,
               })}
               placeholder="+7 701 123 45 67"
               autoComplete="tel"
-              {...register("phoneNumber")}
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
             {errors.phoneNumber && (
-              <p className="text-red-500 text-sm">
-                {errors.phoneNumber.message}
-              </p>
+              <p className="text-red-500 text-sm">{errors.phoneNumber}</p>
             )}
           </div>
 
@@ -134,16 +126,15 @@ export const OrderModal = () => {
             <input
               id="countryCity"
               className={cn("w-full border border-black py-3 px-5 font-light", {
-                "border-red-500": errors.fullname,
+                "border-red-500": errors.countryCity,
               })}
               placeholder="Казахстан, Алматы"
               autoComplete="country"
-              {...register("countryCity")}
+              value={countryCity}
+              onChange={(e) => setCountryCity(e.target.value)}
             />
             {errors.countryCity && (
-              <p className="text-red-500 text-sm">
-                {errors.countryCity.message}
-              </p>
+              <p className="text-red-500 text-sm">{errors.countryCity}</p>
             )}
           </div>
 
@@ -154,14 +145,15 @@ export const OrderModal = () => {
             <input
               id="address"
               className={cn("w-full border border-black py-3 px-5 font-light", {
-                "border-red-500": errors.fullname,
+                "border-red-500": errors.address,
               })}
               placeholder="ул. Достык, дом 3, кв. 75"
               autoComplete="address-level1"
-              {...register("address")}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
             {errors.address && (
-              <p className="text-red-500 text-sm">{errors.address.message}</p>
+              <p className="text-red-500 text-sm">{errors.address}</p>
             )}
           </div>
 

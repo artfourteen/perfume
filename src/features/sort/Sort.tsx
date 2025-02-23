@@ -12,16 +12,25 @@ import {
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoCheckmark, IoChevronDownOutline } from "react-icons/io5";
+import { ImSortNumericAsc, ImSortNumbericDesc } from "react-icons/im";
 
 const sortItems = [
   {
     id: "1",
-    label: "Цена: по убыванию",
+    label: (
+      <div className="flex items-center gap-1">
+        Цена: <ImSortNumbericDesc />
+      </div>
+    ),
     value: "price-desc",
   },
   {
     id: "2",
-    label: "Цена: по возрастанию",
+    label: (
+      <div className="flex items-center gap-1">
+        Цена: <ImSortNumericAsc />
+      </div>
+    ),
     value: "price-asc",
   },
   {
@@ -68,7 +77,7 @@ export const Sort = () => {
             <span>
               {sort
                 ? sortItems.find((sortItem) => sortItem.value === sort)?.label
-                : "Сортировать по..."}
+                : "Сортировка"}
             </span>
             <IoChevronDownOutline />
           </Button>

@@ -69,7 +69,7 @@ export const GenderFilter = () => {
                 ? genderFilterItems.find(
                     (gender) => gender.value === activeGender
                   )?.label
-                : "Пол"}
+                : "Фильтр по полу"}
             </span>
             <IoChevronDownOutline />
           </Button>

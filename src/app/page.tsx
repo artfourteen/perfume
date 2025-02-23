@@ -29,42 +29,46 @@ export default function HomePage() {
               </Suspense>
             </div>
             <div className="w-full lg:w-fit flex items-center flex-wrap justify-between gap-5">
-              <Suspense
-                fallback={
-                  <div className="w-28">
-                    <Skeleton className="h-9" />
-                  </div>
-                }
-              >
-                <GenderFilter />
-              </Suspense>
-              <Suspense
-                fallback={
-                  <div className="w-28">
-                    <Skeleton className="h-9" />
-                  </div>
-                }
-              >
-                <SeasonFilter />
-              </Suspense>
-              <Suspense
-                fallback={
-                  <div className="w-28">
-                    <Skeleton className="h-9" />
-                  </div>
-                }
-              >
-                <BrandFilter />
-              </Suspense>
-              <Suspense
-                fallback={
-                  <div className="w-48">
-                    <Skeleton className="h-9" />
-                  </div>
-                }
-              >
-                <Sort />
-              </Suspense>
+              <div className="flex items-center gap-5">
+                <Suspense
+                  fallback={
+                    <div className="w-28">
+                      <Skeleton className="h-9" />
+                    </div>
+                  }
+                >
+                  <GenderFilter />
+                </Suspense>
+                <Suspense
+                  fallback={
+                    <div className="w-28">
+                      <Skeleton className="h-9" />
+                    </div>
+                  }
+                >
+                  <SeasonFilter />
+                </Suspense>
+              </div>
+              <div className="flex items-center gap-5">
+                <Suspense
+                  fallback={
+                    <div className="w-28">
+                      <Skeleton className="h-9" />
+                    </div>
+                  }
+                >
+                  <BrandFilter />
+                </Suspense>
+                <Suspense
+                  fallback={
+                    <div className="w-48">
+                      <Skeleton className="h-9" />
+                    </div>
+                  }
+                >
+                  <Sort />
+                </Suspense>
+              </div>
             </div>
           </div>
           <Suspense

@@ -1,4 +1,6 @@
-import { Filter } from "@/features/filter/Filter";
+import { BrandFilter } from "@/features/filter/brand/BrandFilter";
+import { GenderFilter } from "@/features/filter/gender/GenderFilter";
+import { SeasonFilter } from "@/features/filter/season/SeasonFilter";
 import { Search } from "@/features/search/Search";
 import { Sort } from "@/features/sort/Sort";
 import { Container } from "@/shared/core/container/Container";
@@ -14,7 +16,7 @@ export default function HomePage() {
     <div className="py-10">
       <Container>
         <div className="flex flex-col gap-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-5">
             <div className="w-full md:w-96">
               <Suspense
                 fallback={
@@ -26,7 +28,7 @@ export default function HomePage() {
                 <Search />
               </Suspense>
             </div>
-            <div className="w-full md:w-fit flex items-center justify-between md:justify-normal gap-5">
+            <div className="w-full lg:w-fit flex items-center flex-wrap justify-between gap-5">
               <Suspense
                 fallback={
                   <div className="w-28">
@@ -34,7 +36,25 @@ export default function HomePage() {
                   </div>
                 }
               >
-                <Filter />
+                <GenderFilter />
+              </Suspense>
+              <Suspense
+                fallback={
+                  <div className="w-28">
+                    <Skeleton className="h-9" />
+                  </div>
+                }
+              >
+                <SeasonFilter />
+              </Suspense>
+              <Suspense
+                fallback={
+                  <div className="w-28">
+                    <Skeleton className="h-9" />
+                  </div>
+                }
+              >
+                <BrandFilter />
               </Suspense>
               <Suspense
                 fallback={

@@ -87,7 +87,7 @@ export default function PerfumePage() {
           <div className="flex flex-col md:flex-row gap-12 md:gap-20 lg:gap-36">
             <button
               onClick={() => setIsImgOpen(true)}
-              className="cursor-zoom-in relative"
+              className="cursor-zoom-in relative h-fit"
             >
               <div className="bg-blue-50 w-fit h-fit">
                 <Image

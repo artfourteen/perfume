@@ -13,6 +13,8 @@ export const PerfumeList = () => {
   const search = searchParams.get("search");
   const selectedBrands = searchParams.get("brands")?.split(",") || [];
   const sortParam = searchParams.get("sort");
+  const gender = searchParams.get("gender");
+  const season = searchParams.get("season");
 
   let filteredPerfumes = perfumes;
   // Фильтрация по поиску
@@ -21,6 +23,20 @@ export const PerfumeList = () => {
       (perfume) =>
         perfume.title.toLowerCase().includes(search.toLowerCase()) ||
         perfume.brand.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  // Фильтрация по гендеру
+  if (gender) {
+    filteredPerfumes = filteredPerfumes.filter(
+      (perfume) => perfume.gender === gender
+    );
+  }
+
+  // Фильтрация по сезону
+  if (season) {
+    filteredPerfumes = filteredPerfumes.filter(
+      (perfume) => perfume.season === season
     );
   }
 

@@ -81,21 +81,14 @@ export const Cart = () => {
                     "border-b": index !== cartPerfumes.length - 1,
                   })}
                 >
-                  <div>
+                  <div className="flex flex-col items-center">
                     <Image
                       src={perfume.img}
                       alt={perfume.slug}
                       width={100}
                       height={100}
                     />
-                  </div>
-                  <div className="flex items-center justify-between font-light w-full">
-                    <div>
-                      <h3 className="font-normal">{perfume.title}</h3>
-                      <h4 className="text-gray-400 text-sm">{perfume.brand}</h4>
-                      <div className="text-xs">{perfume.cartMl}ml</div>
-                    </div>
-                    <div className="flex items-center gap-10">
+                    <div className="sm:hidden">
                       <Counter
                         size="sm"
                         count={perfume.cartQuantity}
@@ -106,6 +99,27 @@ export const Cart = () => {
                           incrementQuantity(perfume.id, perfume.cartMl)
                         }
                       />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between font-light w-full">
+                    <div className="space-y-1">
+                      <h3 className="text-base font-normal">{perfume.title}</h3>
+                      <h4 className="text-gray-400 text-sm">{perfume.brand}</h4>
+                      <div className="text-xs">{perfume.cartMl}ml</div>
+                    </div>
+                    <div className="flex items-center gap-3 sm:gap-6">
+                      <div className="hidden sm:block">
+                        <Counter
+                          size="sm"
+                          count={perfume.cartQuantity}
+                          handleDecrement={() =>
+                            decrementQuantity(perfume.id, perfume.cartMl)
+                          }
+                          handleIncrement={() =>
+                            incrementQuantity(perfume.id, perfume.cartMl)
+                          }
+                        />
+                      </div>
                       <div className="text-lg">
                         {perfume.price[
                           perfume.ml.indexOf(perfume.cartMl)

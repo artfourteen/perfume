@@ -28,16 +28,16 @@ export const ParfumeCard = ({
           <div className="font-medium">{price[0].toLocaleString()}₸</div>
         </div>
       </div>
-      <div className="flex lg:hidden items-center gap-3 justify-center">
-        <Button variant="secondary" className="border border-black">
+      <div className="w-2/3 mx-auto flex lg:hidden items-center gap-3 justify-center">
+        {/* <Button variant="secondary" className="border border-black">
           Подробнее
-        </Button>
+        </Button> */}
         <Button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
           }}
-          className="border border-black"
+          className="w-full border border-black"
         >
           Купить
         </Button>

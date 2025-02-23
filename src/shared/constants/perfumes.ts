@@ -8,6 +8,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Amouage",
     price: [11000, 20000],
     ml: [5, 10],
+    season: "winter",
+    gender: "male",
     description:
       "Interlude - это пряно-древесный аромат, который открывается пикантным бергамотом, орегано и маслом ягод пименто, создавая ощущение хаоса и напряжения. В сердце появляются амбра, ладан и опопонакс, которые добавляют глубину и теплоту. База состоит из насыщенных нот уда, сандалового дерева, кожи и пачули, завершая композицию сложностью и утонченностью.",
     img: "/assets/img/perfume/amouage_interlude.webp",
@@ -19,6 +21,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Boadicea the Victorious",
     price: [23000, 42000],
     ml: [5, 10],
+    season: "fall",
+    gender: "unisex",
     description:
       "Царственное слияние цитрусовых нот и зеленых аккордов с гармоничными оттенками розы, кардамона, индийского жасмина, уда и пачули. Blue Sapphire - это благородный аромат, вдохновленный сиянием драгоценного камня, воплощающий роскошь и элегантность.",
     img: "/assets/img/perfume/boadicea_blue_sapphire.webp",
@@ -30,6 +34,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Amouage",
     price: [15000, 27000],
     ml: [5, 10],
+    season: "spring",
+    gender: "male",
     description:
       "Reflection 45 Man стал более насыщенным, мощным и продуманным. Благодаря щедрой 45-процентной концентрации композиция раскрывает сложные и многослойные ноты, переплетающиеся с древесными и пряными оттенками. Это современная интерпретация классического Reflection Man с усиленной глубиной и стойкостью.",
     img: "/assets/img/perfume/amouage_reflection_45.webp",
@@ -41,6 +47,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Arte Olfatto",
     price: [4400, 7920],
     ml: [5, 10],
+    season: "winter",
+    gender: "male",
     description:
       "Black Hashish - теплый и обволакивающий аромат с запахом ладана и крепкого дыма. Он обладает насыщенным и гипнотическим настроением, в котором сочетаются аккорды черного дерева, смолистых нот и пряных специй, создавая атмосферу загадочности и утонченности.",
     img: "/assets/img/perfume/arte_olfatto_black_hashish.webp",
@@ -52,6 +60,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "BDK Parfums",
     price: [9350, 16830],
     ml: [5, 10],
+    season: "fall",
+    gender: "unisex",
     description:
       "Gris Charnel Extrait раскрывает интенсивность оригинальной подписи, чтобы извлечь более богатую и многогранную версию. Пряная теплая основа из кардамона и черного чая смешивается с элегантной инжирной сладостью, а затем дополняется мощными древесными аккордами и сладкой ванилью.",
     img: "/assets/img/perfume/bdk_gris_charnel.webp",
@@ -63,6 +73,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "BVLGARI",
     price: [18000, 31000],
     ml: [5, 10],
+    season: "summer",
+    gender: "male",
     description:
       "Погрузитесь в калейдоскоп зелени и синевы живописного острова Мадагаскар — земли, хранящей геологические сокровища, такие как магический лабрадорит. Этот удивительный камень, рожденный природой, завораживает своими волшебными переливами, похожими на танец полярного сияния, околдовывая игрой света и цвета",
     img: "/assets/img/perfume/bdk_oud_abramad.png",
@@ -74,6 +86,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Boadicea the Victorious",
     price: [13000, 23000],
     ml: [5, 10],
+    season: "spring",
+    gender: "female",
     description:
       "Bodacious - это атака на чувства, соблазняющая, ошеломляющая и превосходная на каждом шагу. Композиция наполнена роскошными фруктовыми и цветочными нотами, приправленными тёплыми специями, создавая дерзкий и страстный аромат.",
     img: "/assets/img/perfume/boadicea_bodacious.webp",
@@ -85,6 +99,8 @@ export const perfumes: ParfumeEntity[] = [
     brand: "Boadicea the Victorious",
     price: [44000, 79200],
     ml: [5, 10],
+    season: "winter",
+    gender: "unisex",
     description:
       "С первых мгновений этого утонченного аромата ощущается мощь и изящество дракона. Великолепное сочетание цветочных, древесных и восточных нот, придающих аромату энергию, силу и страсть, оставляет незабываемое впечатление.",
     img: "/assets/img/perfume/boadicea_dragon.webp",

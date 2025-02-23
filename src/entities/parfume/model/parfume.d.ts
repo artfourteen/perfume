@@ -7,4 +7,6 @@ export interface ParfumeEntity {
   ml: number[];
   description: string;
   img: string;
+  season: "winter" | "summer" | "fall" | "spring";
+  gender: "male" | "female" | "unisex";
 }

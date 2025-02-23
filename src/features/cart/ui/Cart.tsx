@@ -21,10 +21,16 @@ export const Cart = () => {
     removeFromCart,
     incrementQuantity,
     decrementQuantity,
+    setIsOrderModalOpen,
   } = useCart();
 
   const cartPerfumes = useMemo(() => getCartPerfumes(), [cartItems]);
   const totalPrice = useMemo(() => getTotalPrice(), [cartItems]);
+
+  const handleOrderClick = () => {
+    setOpen(false);
+    setIsOrderModalOpen(true);
+  };
 
   return (
     <div
@@ -166,7 +172,7 @@ export const Cart = () => {
               <div>{totalPrice.toLocaleString()}₸</div>
             </div>
             <Button
-              onClick={() => setOpen(false)}
+              onClick={handleOrderClick}
               className="text-lg uppercase py-7 font-medium"
             >
               Оформить заказ

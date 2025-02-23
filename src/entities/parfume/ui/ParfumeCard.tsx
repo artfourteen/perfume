@@ -32,15 +32,7 @@ export const ParfumeCard = ({
         {/* <Button variant="secondary" className="border border-black">
           Подробнее
         </Button> */}
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-          className="w-full border border-black"
-        >
-          Купить
-        </Button>
+        <Button className="w-full border border-black">Купить</Button>
       </div>
       <div
         className={cn(

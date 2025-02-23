@@ -7,6 +7,6 @@ interface ContainerProps extends PropsWithChildren {
 
 export const Container = ({ children, className }: ContainerProps) => {
   return (
-    <div className={cn("container mx-auto px-4", className)}>{children}</div>
+    <div className={cn("container mx-auto px-4 md:px-0", className)}>{children}</div>
   );
 };

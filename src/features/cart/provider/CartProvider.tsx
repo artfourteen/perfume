@@ -1,15 +1,15 @@
 "use client";
 
 import {
-  PropsWithChildren,
+  type PropsWithChildren,
   useState,
   useEffect,
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 import { CartContext } from "./CartContext";
 import { perfumes } from "@/shared/constants/perfumes";
-import { ParfumeEntity } from "@/entities/parfume/model/parfume";
+import type { ParfumeEntity } from "@/entities/parfume/model/parfume";
 import { phoneNumber as sitePhoneNumber } from "@/shared/constants/contacts";
 
 export interface CartItem {
@@ -99,7 +99,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     };
   }, [open]);
 
-  const addToCart = (id: string, ml: number, quantity: number = 1) => {
+  const addToCart = (id: string, ml: number, quantity = 1) => {
     setCartItems((currentItems) => {
       const existingItem = currentItems.find(
         (item) => item.id === id && item.ml === ml
@@ -204,9 +204,16 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       .filter(Boolean)
       .join("\n\n");
 
-    const message = `✨ *Новый заказ!* ✨\n\n${cartDetails}\n\n📌 *Детали доставки:*\n👤 Имя: *${fullname}*  
-📞 Телефон: *${phoneNumber}*  
-🏠 Адрес: *${countryCity}, ${address}*\n\n💬 Пожалуйста, подтвердите заказ. Спасибо! 🙌`;
+    const currentFullname = fullname || localStorage.getItem("fullname") || "";
+    const currentPhoneNumber =
+      phoneNumber || localStorage.getItem("phoneNumber") || "";
+    const currentCountryCity =
+      countryCity || localStorage.getItem("countryCity") || "";
+    const currentAddress = address || localStorage.getItem("address") || "";
+
+    const message = `✨ *Новый заказ!* ✨\n\n${cartDetails}\n\n📌 *Детали доставки:*\n👤 Имя: *${currentFullname}*  
+📞 Телефон: *${currentPhoneNumber}*  
+🏠 Адрес: *${currentCountryCity}, ${currentAddress}*\n\n💬 Пожалуйста, подтвердите заказ. Спасибо! 🙌`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${sitePhoneNumber}?text=${encodedMessage}`;

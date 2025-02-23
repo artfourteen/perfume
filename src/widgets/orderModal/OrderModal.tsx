@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-// Validation schema using Zod
 const orderSchema = z.object({
   fullname: z.string().min(2, "Введите ваше имя"),
   phoneNumber: z
@@ -52,8 +51,16 @@ export const OrderModal = () => {
     setPhoneNumber(data.phoneNumber);
     setCountryCity(data.countryCity);
     setAddress(data.address);
-    sendWhatsAppMessage();
-    setIsOrderModalOpen(false);
+
+    localStorage.setItem("fullname", data.fullname);
+    localStorage.setItem("phoneNumber", data.phoneNumber);
+    localStorage.setItem("countryCity", data.countryCity);
+    localStorage.setItem("address", data.address);
+
+    setTimeout(() => {
+      sendWhatsAppMessage();
+      setIsOrderModalOpen(false);
+    }, 100);
   };
 
   return (

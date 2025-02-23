@@ -7,7 +7,7 @@ import { IoCloseOutline } from "react-icons/io5";
 type GenderType = "male" | "female" | "unisex";
 type SeasonType = "summer" | "fall" | "winter" | "spring";
 
-const getGenderLabel = (val: GenderType) => {
+export const getGenderLabel = (val: GenderType) => {
   switch (val) {
     case "male":
       return "Мужские";
@@ -18,7 +18,7 @@ const getGenderLabel = (val: GenderType) => {
   }
 };
 
-const getSeasonLabel = (val: SeasonType) => {
+export const getSeasonLabel = (val: SeasonType) => {
   switch (val) {
     case "summer":
       return "Лето";

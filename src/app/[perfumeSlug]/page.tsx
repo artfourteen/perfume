@@ -13,6 +13,10 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { useCart } from "../../features/cart/provider/useCart";
+import {
+  getGenderLabel,
+  getSeasonLabel,
+} from "@/widgets/selectedBrandsList/SelectedBrandsList";
 
 export default function PerfumePage() {
   const params = useParams();
@@ -103,9 +107,26 @@ export default function PerfumePage() {
             <div className="flex flex-col gap-6 md:w-5/6 lg:w-fit">
               <div className="flex flex-col gap-2">
                 <h3 className="text-3xl font-normal">{perfumeInfo.title}</h3>
-                <span className="text-md font-light text-gray-400 uppercase">
+                <Link
+                  href={`/?brands=${perfumeInfo.brand}`}
+                  className="text-md font-light text-gray-400 uppercase hover:text-gray-500 transition-all"
+                >
                   {perfumeInfo.brand}
-                </span>
+                </Link>
+                <div className="flex items-center gap-1">
+                  <Link
+                    href={`/?gender=${perfumeInfo.gender}`}
+                    className="border border-black rounded-full py-1 px-3 text-xs hover:bg-gray-100 transition-all"
+                  >
+                    {getGenderLabel(perfumeInfo.gender)}
+                  </Link>
+                  <Link
+                    href={`/?season=${perfumeInfo.season}`}
+                    className="border border-black rounded-full py-1 px-3 text-xs hover:bg-gray-100 transition-all"
+                  >
+                    {getSeasonLabel(perfumeInfo.season)}
+                  </Link>
+                </div>
               </div>
               <div className="text-2xl font-light">
                 {perfumeInfo.price[

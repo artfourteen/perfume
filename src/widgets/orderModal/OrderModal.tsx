@@ -2,18 +2,21 @@
 
 import type React from "react";
 
-import { useState } from "react";
 import { useCart } from "@/features/cart/provider/useCart";
 import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
+import { unmask } from "@/shared/utils/maskTools";
+import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import * as z from "zod";
+import PhoneInput from "@/shared/ui/phoneInput/PhoneInput";
 
 const orderSchema = z.object({
   fullname: z.string().min(2, "Введите ваше имя"),
   phoneNumber: z
     .string()
-    .regex(/^\+?\d{7,15}$/, "Введите корректный номер телефона"),
+    .length(11, "Номер телефона должен содержать 11 цифр") // 7 + 10 digits
+    .regex(/^7\d{10}$/, "Введите корректный номер телефона"), // Starts with 7 followed by exactly 10 digits
   countryCity: z.string().min(2, "Введите страну и город"),
   address: z.string().min(5, "Введите адрес"),
 });
@@ -101,18 +104,13 @@ export const OrderModal = () => {
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="phoneNumber" className="text-sm font-light">
-              Ваш телефон*
-            </label>
-            <input
+            <PhoneInput
               id="phoneNumber"
-              className={cn("w-full border border-black py-3 px-5 font-light", {
-                "border-red-500": errors.phoneNumber,
-              })}
-              placeholder="+7 701 123 45 67"
-              autoComplete="tel"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={setPhoneNumber}
+              error={errors.phoneNumber}
+              placeholder="+7 (701) 123-45-67"
+              autoComplete="tel"
             />
             {errors.phoneNumber && (
               <p className="text-red-500 text-sm">{errors.phoneNumber}</p>

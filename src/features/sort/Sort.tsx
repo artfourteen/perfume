@@ -82,7 +82,7 @@ export const Sort = () => {
             <IoChevronDownOutline />
           </Button>
         </DropdownTrigger>
-        <DropdownList className="right-0">
+        <DropdownList className="right-0 overflow-x-hidden">
           {sortItems.map((sortItem) => (
             <DropdownItem asChild key={sortItem.id}>
               <Button

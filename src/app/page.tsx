@@ -17,7 +17,7 @@ export default function HomePage() {
       <Container>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5">
-            <div className="w-full md:w-96">
+            <div className="w-full lg:w-96">
               <Suspense
                 fallback={
                   <div className="w-full">
@@ -29,7 +29,7 @@ export default function HomePage() {
               </Suspense>
             </div>
             <div className="w-full lg:w-fit flex items-center flex-wrap justify-between gap-5">
-              <div className="flex items-center gap-5">
+              <div className="flex w-full md:w-fit items-center justify-between md:justify-start gap-5">
                 <Suspense
                   fallback={
                     <div className="w-28">
@@ -49,7 +49,7 @@ export default function HomePage() {
                   <SeasonFilter />
                 </Suspense>
               </div>
-              <div className="flex items-center gap-5">
+              <div className="flex w-full md:w-fit items-center justify-between md:justify-start gap-5">
                 <Suspense
                   fallback={
                     <div className="w-28">

@@ -10,8 +10,8 @@ import "./globals.scss";
 import { Cart } from "@/features/cart/ui/Cart";
 
 export const metadata: Metadata = {
-  title: "AysParfume",
-  description: "Приобретите изысканные духи на любой случай.",
+  title: "Perfume",
+  description: "Powered by ART14",
 };
 
 const dynalight = Dynalight({

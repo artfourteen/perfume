@@ -6,6 +6,6 @@ interface LogoProps {
 
 export const Logo = ({ className }: LogoProps) => {
   return (
-    <span className={cn("text-3xl font-dynalight", className)}>AysParfume</span>
+    <span className={cn("text-3xl font-dynalight", className)}>Parfume</span>
   );
 };

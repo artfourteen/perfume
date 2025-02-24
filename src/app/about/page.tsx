@@ -3,7 +3,7 @@ import { FAQ } from "@/widgets/faq/Faq";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "О нас | AysParfume",
+  title: "О нас | Perfume",
 };
 
 export default function AboutPage() {

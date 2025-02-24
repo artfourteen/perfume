@@ -5,11 +5,10 @@ import type React from "react";
 import { useCart } from "@/features/cart/provider/useCart";
 import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
-import { unmask } from "@/shared/utils/maskTools";
+import PhoneInput from "@/shared/ui/phoneInput/PhoneInput";
 import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import * as z from "zod";
-import PhoneInput from "@/shared/ui/phoneInput/PhoneInput";
 
 const orderSchema = z.object({
   fullname: z.string().min(2, "Введите ваше имя"),

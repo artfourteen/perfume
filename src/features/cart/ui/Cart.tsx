@@ -50,7 +50,7 @@ export const Cart = () => {
             e.stopPropagation();
           }}
           className={cn(
-            "bg-white h-full w-full md:w-2/3 lg:w-1/2 2xl:w-1/3 fixed top-0 -right-full delay-200 transition-all",
+            "bg-white h-full w-full md:w-2/3 lg:w-1/2 2xl:w-1/3 fixed top-0 -right-full transition-all",
             "flex flex-col",
             {
               "right-0": open,

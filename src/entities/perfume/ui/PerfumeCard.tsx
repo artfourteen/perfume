@@ -4,15 +4,15 @@ import { cn } from "@/shared/core/cn/cn";
 import { Button } from "@/shared/ui/button/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { ParfumeEntity } from "../model/parfume";
+import { PerfumeEntity } from "../model/perfume";
 
-export const ParfumeCard = ({
+export const PerfumeCard = ({
   slug,
   title,
   brand,
   price,
   img,
-}: ParfumeEntity) => {
+}: PerfumeEntity) => {
   return (
     <Link
       href={`/${slug}`}

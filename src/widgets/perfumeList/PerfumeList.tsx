@@ -1,10 +1,10 @@
 "use client";
 
-import { ParfumeCard } from "@/entities/parfume/ui/ParfumeCard";
 import { perfumes } from "@/shared/constants/perfumes";
 import { cn } from "@/shared/core/cn/cn";
 import { TbMoodEmpty } from "react-icons/tb";
 import { useSearchParams } from "next/navigation";
+import { PerfumeCard } from "@/entities/perfume/ui/PerfumeCard";
 
 export const PerfumeList = () => {
   const searchParams = useSearchParams();
@@ -85,7 +85,7 @@ export const PerfumeList = () => {
       )}
     >
       {filteredPerfumes.map((perfume) => (
-        <ParfumeCard key={perfume.id} {...perfume} />
+        <PerfumeCard key={perfume.id} {...perfume} />
       ))}
     </div>
   );

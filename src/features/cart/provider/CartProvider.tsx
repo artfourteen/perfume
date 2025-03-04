@@ -9,7 +9,7 @@ import {
 } from "react";
 import { CartContext } from "./CartContext";
 import { perfumes } from "@/shared/constants/perfumes";
-import { ParfumeEntity } from "@/entities/parfume/model/parfume";
+import { PerfumeEntity } from "@/entities/perfume/model/perfume";
 import { phoneNumber as sitePhoneNumber } from "@/shared/constants/contacts";
 
 export interface CartItem {
@@ -29,7 +29,7 @@ export interface CartContextType {
   clearCart: () => void;
   getCartItemQuantity: (id: string) => number;
   getTotalPrice: () => number;
-  getCartPerfumes: () => (ParfumeEntity & {
+  getCartPerfumes: () => (PerfumeEntity & {
     cartQuantity: number;
     cartMl: number;
   })[];

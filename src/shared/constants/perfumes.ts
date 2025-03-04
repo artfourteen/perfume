@@ -1,6 +1,6 @@
-import { ParfumeEntity } from "@/entities/parfume/model/parfume";
+import { PerfumeEntity } from "@/entities/perfume/model/perfume";
 
-export const perfumes: ParfumeEntity[] = [
+export const perfumes: PerfumeEntity[] = [
   {
     id: "550e8400-e29b-41d4-a716-446655440000",
     slug: "amouage-interlude-for-men",

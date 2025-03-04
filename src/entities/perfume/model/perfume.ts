@@ -1,4 +1,4 @@
-export interface ParfumeEntity {
+export interface PerfumeEntity {
   id: string;
   title: string;
   slug: string;

@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Perfume E-Commerce Website
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This is a modern e-commerce website for perfumes, built using **Next.js**. The platform offers a seamless shopping experience, featuring a visually appealing UI, smooth navigation, and robust performance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- 🛍 **Beautiful UI** - Aesthetic design with high-quality images showcasing perfumes.
+- 🔍 **Advanced Search & Filtering** - Easily find products based on categories, brands, or price range.
+- 🛒 **Cart & Checkout** - Secure and smooth shopping cart functionality.
+- 📱 **Responsive Design** - Fully optimized for mobile and desktop devices.
+- ⚡ **Fast Performance** - Built with Next.js for enhanced speed and SEO.
+
+## Technologies Used
+
+- **Next.js 15** - Framework for fast and efficient front-end performance.
+- **React 19** - Component-based UI development.
+- **Tailwind CSS** - Styling for modern and responsive design.
+- **Sass** - Additional styling flexibility.
+- **React Hook Form & Zod** - Form validation and schema validation.
+- **React Icons** - Icon library for UI enhancements.
+- **React Loading Skeleton** - Skeleton loaders for better user experience.
+- **Use-debounce** - Performance optimization for input handling.
+
+## Design overview
+
+_The visually stunning homepage showcasing featured perfumes._
+
+_Detailed product page with high-resolution images._
+
+_Smooth shopping cart experience with easy checkout options._
+
+## Installation & Setup
+
+To run this project locally:
+
+```sh
+# Clone the repository
+git clone https://github.com/artfourteen/perfume.git
+cd perfume
+
+# Install dependencies
+npm install  # or yarn install
+
+# Run the development server
+npm run dev  # or yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The website is deployed using **Vercel** and is hosted on a **custom domain** for a professional and seamless user experience.
 
-## Learn More
+```sh
+vercel
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🎉 Enjoy a seamless perfume shopping experience!
